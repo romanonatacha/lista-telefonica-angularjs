@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html ng-app="listaTelefonica">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="style.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.2/angular.min.js"></script>
+    <script src="listaTelefonica.js"></script>
+    <script src="listaTelefonicaController.js"></script>
+</head>
+<body ng-controller="listaTelefonicaCtrl">
+    <div class="jumbotron">
+        <h3 ng-bind="app"></h3>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th class="text-center">Nome</th>
+                    <th class="text-center">Telefone</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="contato in contatos">
+                    <td ng-bind="contato.nome"></td>
+                    <td ng-bind="contato.telefone"></td>
+                </tr>
+            </tbody>
+        </table>
+        <hr/>
+        <input class="form-control" type="text" ng-model="contato.nome" placeholder="Nome"/>
+        <input class="form-control " type="text" ng-model="contato.telefone" placeholder="Telefone"/>
+        <button class="btn btn-block btn-info" ng-click="adicionarContato(contato)">Adicionar Contato</button>
+    </div>
+</body>
+</html>
