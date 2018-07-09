@@ -1,5 +1,5 @@
 .jumbotron {
-    width: 500px;
+    width: 600px;
     text-align: center;
     margin-left: auto;
     margin-right: auto;
@@ -8,6 +8,12 @@
     color: white;
     background-color: rgb(54, 54, 54);
     font-family: Helvetica, sans-serif;
+}
+
+.jumbotron h3 {
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin-bottom: 20px;
 }
 
 .table {

@@ -1,37 +1,7 @@
-angular.module('listaTelefonica').controller('listaTelefonicaCtrl', function ($scope) {
+angular.module('listaTelefonica').controller('listaTelefonicaCtrl', function ($scope, $http) {
     
-    $scope.app = 'Lista Telefonica';
+    $scope.app = 'Lista Telefônica';
     $scope.contatos = [
-        {
-            nome: 'Pedro',
-            telefone: '999998888',
-            data: new Date(),
-            operadora: {
-                nome: "Oi", 
-                codigo: 14, 
-                categoria: "Celular"
-            }
-        },
-        {
-            nome: 'Ana',
-            telefone: '999997777',
-            data: new Date(),
-            operadora: {
-                nome: "Tim", 
-                codigo: 41, 
-                categoria: "Celular"
-            }
-        },
-        {
-            nome: 'Maria',
-            telefone: '999996666',
-            data: new Date(),
-            operadora: {
-                nome: "Vivo", 
-                codigo: 15, 
-                categoria: "Celular"
-            }
-        }
     ];
     $scope.operadoras = [
         {
@@ -65,10 +35,28 @@ angular.module('listaTelefonica').controller('listaTelefonicaCtrl', function ($s
             categoria: 'Fixo'
         }
     ];
+
+    var carregarContatos = function () {
+        $http.get("http://localhost:3001/contatos").then(function (response) {
+            $scope.contatos = response.data;
+        }).catch(function (response) {
+            $scope.message = "Aconteceu um problema: " + response.data;
+        });
+    };
+    var carregarOperadoras = function () {
+        $http.get("http://localhost:3001/operadoras").then(function (response) {
+            $scope.operadoras = response.data;
+        });
+    };
+
+
     $scope.adicionarContato = function (contato) {
-        $scope.contatos.push(angular.copy(contato));
+        contato.data = new Date();
+        $http.post('http://localhost:3001/contatos', contato).then(function (response) {
         delete $scope.contato;
         $scope.contatoForm.$setPristine();
+        carregarContatos();
+        });
     };
 
     $scope.apagarContatos = function (contatos) {
@@ -88,4 +76,5 @@ angular.module('listaTelefonica').controller('listaTelefonicaCtrl', function ($s
         $scope.direcaoDaOrdenacao = !$scope.direcaoDaOrdenacao;
     };
 
+    carregarContatos();
 });
