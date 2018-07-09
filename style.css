@@ -10,3 +10,12 @@
 .table {
     margin-top: 20px;
 }
+
+.form-control, button {
+    margin-top: 5px;
+}
+
+.selecionado {
+    background-color: rgb(61, 61, 61);
+    color: white;
+}
