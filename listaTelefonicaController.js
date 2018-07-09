@@ -4,15 +4,33 @@ angular.module('listaTelefonica').controller('listaTelefonicaCtrl', function ($s
     $scope.contatos = [
         {
             nome: 'Pedro',
-            telefone: '999998888'
+            telefone: '999998888',
+            data: new Date(),
+            operadora: {
+                nome: "Oi", 
+                codigo: 14, 
+                categoria: "Celular"
+            }
         },
         {
             nome: 'Ana',
-            telefone: '999997777'
+            telefone: '999997777',
+            data: new Date(),
+            operadora: {
+                nome: "Tim", 
+                codigo: 41, 
+                categoria: "Celular"
+            }
         },
         {
             nome: 'Maria',
-            telefone: '999996666'
+            telefone: '999996666',
+            data: new Date(),
+            operadora: {
+                nome: "Vivo", 
+                codigo: 15, 
+                categoria: "Celular"
+            }
         }
     ];
     $scope.operadoras = [
@@ -63,6 +81,11 @@ angular.module('listaTelefonica').controller('listaTelefonicaCtrl', function ($s
         return contatos.some(function (contato) {
             return contato.selecionado;
         });
+    };
+
+    $scope.ordenarPor = function (campo) {
+        $scope.criterioDeOrdenacao = campo;
+        $scope.direcaoDaOrdenacao = !$scope.direcaoDaOrdenacao;
     };
 
 });

@@ -1,10 +1,13 @@
 .jumbotron {
-    width: 400px;
+    width: 500px;
     text-align: center;
     margin-left: auto;
     margin-right: auto;
     margin-top: 20px;
     padding: 15px 40px 40px 40px;
+    color: white;
+    background-color: rgb(54, 54, 54);
+    font-family: Helvetica, sans-serif;
 }
 
 .table {
@@ -16,6 +19,14 @@
 }
 
 .selecionado {
-    background-color: rgb(61, 61, 61);
+    background-color: rgb(255, 134, 104);
     color: white;
+}
+
+a {
+    color: white;
+}
+
+a:hover {
+    color: rgb(255, 134, 104);;
 }
