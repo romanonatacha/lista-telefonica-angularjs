@@ -50,6 +50,7 @@ angular.module('listaTelefonica').controller('listaTelefonicaCtrl', function ($s
     $scope.adicionarContato = function (contato) {
         $scope.contatos.push(angular.copy(contato));
         delete $scope.contato;
+        $scope.contatoForm.$setPristine();
     };
 
     $scope.apagarContatos = function (contatos) {
